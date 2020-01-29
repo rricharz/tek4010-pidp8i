@@ -1,0 +1,155 @@
+program graph1(output);
+{ 2019 RR original version for R65 Pascal }
+{ 2020 RR converted to OS/8 on PiDP-8 }
+
+{ ***** TEKTRONIX CONSTANTS ***** }
+const maxx = 1023; { Tektronix 4010 graphics }
+      maxy = 780;
+
+      maxcolumns = 74; { Tektronix 4010 alpha }
+      maxlines   = 35;
+
+      solid      = 1;
+      dotted     = 2;
+      dotdash    = 3;
+      shortdash  = 4;
+      longdash   = 5;
+
+      pi         = 3.141592654;
+
+{ ***** TEKTRONIX VARIABLES ****** }
+
+var   xs,ys: integer;
+
+{ ***** USER PROGRAM VARIABLES ***** }
+
+      xcenter,ycenter:integer;
+      ii,radius:integer;
+
+{ ***** TEKTRONIX PROCEDURES ***** }
+
+procedure clearscreen;
+begin
+  write(chr(27),chr(12));
+end;
+
+procedure startdraw(x1,y1:integer);
+var x,y: integer;
+begin
+  x:=x1;
+  y:=y1;
+  if x<0 then x:=0;
+  if x>=maxx then x:=maxx-1;
+  if y<0 then y:=0;
+  if y>=maxy then y:=maxy;
+  write(chr(29));
+  write(chr((y div 32)+32));
+  write(chr((y mod 32)+96));
+  write(chr((x div 32)+32));
+  write(chr((x mod 32)+64));
+  xs:=x;
+  ys:=y;
+end;
+
+procedure draw(x2,y2:integer);
+var x,y: integer;
+    hxchange,lychange:boolean;
+begin
+  x:=x2;
+  y:=y2;
+  if x<0 then x:=0;
+  if x>=maxx then x:=maxx-1;
+  if y<0 then y:=0;
+  if y>=maxy then y:=maxy;
+  if (y div 32)<>(ys div 32) then
+    write(chr((y div 32)+32));
+  hxchange:=(x div 32) <> (xs div 32);
+  lychange:=(y mod 32) <> (ys mod 32);
+  if hxchange or lychange then
+    write(chr((y mod 32)+96));
+  if hxchange then
+    write(chr((x div 32)+32));
+  write(chr((x mod 32)+64));
+  xs:=x;
+  ys:=y;
+end;
+
+procedure enddraw;
+begin
+  write(chr(31));
+end;
+
+procedure drawvector(x1,y1,x2,y2:integer);
+begin
+  startdraw(x1,y1);
+  draw(x2,y2);
+  enddraw;
+end;
+
+procedure drawrectange(x1,y1,x2,y2:integer);
+begin
+  startdraw(x1,y1);
+  draw(x2,y1);
+  draw(x2,y2);
+  draw(x1,y2);
+  draw(x1,y1);
+  enddraw;
+end;
+
+procedure moveto(x1,y1: integer);
+{ move in graphics coordinate space }
+begin
+  startdraw(x1,y1);
+  enddraw;
+end;
+
+procedure setchsize(size:integer);
+{ set character size }
+begin
+  if (size>=1)and(size <= 4) then begin
+    write(chr(27));
+    write(chr(ord('7') + size));
+  end;
+end;
+
+procedure setlinemode(tp:integer);
+begin
+  if (tp>=solid)and(tp<=longdash) then begin
+    write(chr(27));
+    write(chr(95+tp));
+  end;
+end;
+
+procedure drawcircle(x,y,r:integer);
+{ draw a circle, very slow! }
+var i,x2,y2: integer; arg:real;
+begin
+  startdraw(x+r,y);
+  for i:=0 to r do begin
+    arg:=i*2.0*pi/r;
+    x2:=x+trunc(r*cos(arg));
+    y2:=y+trunc(r*sin(arg));
+    draw(x2,y2);
+  end;
+  enddraw;
+end;
+
+{ ***** USER PROGRAM ***** }
+
+begin
+  xcenter:=maxx div 2;
+  ycenter:=maxy div 2;
+  radius:=9*maxy div 20;
+
+  clearscreen;
+  write('OS/8 on PiDP-8: x=sin(3t), y=sin(4t)');
+
+  startdraw(xcenter+radius,ycenter);
+  for ii:=1 to 360 do begin
+    draw(xcenter+trunc(cos(3.0*ii*pi/180.0)*radius),
+         ycenter+trunc(sin(4.0*ii*pi/180.0)*radius));
+  end;
+  enddraw;
+  moveto(1,60); writeln;
+
+end. 
