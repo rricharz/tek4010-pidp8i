@@ -19,7 +19,7 @@ where name is the file name of the Pascal program you want to compile.
 
 Execute it with
 
-	.R P,name.BP
+	.R P,name.PB
 
 Source files in this directory:
 
@@ -28,7 +28,7 @@ Source files in this directory:
 	- graph3.ps	3D plot, sin(r+d)
 	- typep8.ps	type Tektronix 4010/4014 plot files .p8
 
-Usage of typep8 (use only if you are connected to tek4010 or a real Tektronix terminal
+Usage of typep8 (use only if you are connected to tek4010 or a real Tektronix terminal)
 
 	.R P,TYPEP8,name.P8
 
@@ -68,6 +68,6 @@ with tek4010. Then type
 	cd pidp8i
 	make run
 
-Note, that you are now running OS/8 with the RK05 image in /home/pi/pidp8i/bin
+Note, that you are now running OS/8 with the RK05 image in /home/pi/pidp8i/bin.
 Don't forget to use one of the keys to erase the screen very frequently.
 
