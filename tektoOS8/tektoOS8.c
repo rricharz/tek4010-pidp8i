@@ -55,9 +55,11 @@ int main(int argc, char *argv[])
 
     count = 0;
     
-    while ((c = (fgetc(finput) & 0x7F)) != EOF) {
+    while ((c = fgetc(finput)) != EOF) {
         count++;
-        if (c == 0) printf("NULL\n");
+        c = c & 0x7F;
+        
+        if (c == 95) c = 94;
         
         if (c < 32) { // convert control characters
             fputc('^', foutput);
