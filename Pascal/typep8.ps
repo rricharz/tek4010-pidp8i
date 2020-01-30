@@ -1,0 +1,29 @@
+PROGRAM typep8(input,output); {$L-}
+(* plot a .p8 Tektronix plot file
+
+   convert ^letter to control character
+   (including CR and LF) 
+   remove CRLF
+   convert ^! to CHR(127)
+   convert ^# to ^          *)
+
+var ch:char;
+
+begin
+  while not eof(input) do
+    begin
+      while not eoln(input) do
+	begin
+	  read(input,ch);
+	  if (ch = '^') then begin
+            read(input,ch);
+            if (ch = '#') then write(output,'^')
+            else if (ch = '!') then write(output,chr(127))
+            else write(output,chr(ord(ch)-ord('@')))
+          end
+          else
+            write(output,ch)
+	end;
+      readln(input)
+    end;
+end.
