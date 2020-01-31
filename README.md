@@ -38,10 +38,19 @@ Usage of typep8 (use only if you are connected to tek4010 or a real Tektronix te
 These are OS/8 compatible plot files for the Tektronix 4010, 4014. They have been converted
 using tektoOS8. To display them, use TYPEP8 (see above).
 
+
 **tektoOS8 directory**
 
 tektoOS8 is a small conversion program to convert normal Tektronix 4010/4014 plot files
 to a format compatible with OS/8. They can only be displayed using TYPEP8 (see above).
+
+Use it as follows
+
+	tektoOS8 filename
+
+where filename is the name of the file to convert, without extension. The program will convert
+filename.plt to filename.p8.
+
 
 **Floppy_images directory**
 
@@ -52,6 +61,7 @@ This directory contains the following floppy disk images:
 	- pascal3.rx01	Tektronix graphics programs written in Pascal
 	- tekplot1.rx01	Tektronix plot files (to be used with TYPEP8)
 	- tekplot2.rx01	Tektronix plot files (to be used with TYPEP8)
+
 
 **using tek4010 with the PiDP-8**
 
@@ -70,4 +80,20 @@ with tek4010. Then type
 
 Note, that you are now running OS/8 with the RK05 image in /home/pi/pidp8i/bin.
 Don't forget to use one of the keys to erase the screen very frequently.
+
+
+**Contributors**
+
+Thanks to everybody who contributed important ideas, helped with the debugging and preserved
+the historical data. This is an incomplete list:
+
+Oscar Vermeulen, Vincent Slyngstad, Warren Young, Steve Tockey, Rick Murphy, Ian Schofield, Mike Katz,
+Ed Spittles, Win Heagy.
+
+
+**The usual disclaimer**
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 

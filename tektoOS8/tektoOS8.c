@@ -6,10 +6,43 @@
 //  (including CR and LF)
 //  add a CRLF every 40 characters
 //  convert ^ to ^#
-//  convert ASCII(127) to `!
+//  convert ASCII(127) to ^!
+
+//  https://github.com/rricharz/tek4010-pidp8i
+
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+ 
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//  MA 02110-1301, USA.
+
+//  This program is free software; you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation; either version 2 of the License, or
+//  (at your option) any later version.
+
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+ 
+//  You should have received a copy of the GNU General Public License
+//  along with this program; if not, write to the Free Software
+//  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+//  MA 02110-1301, USA.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX 40
 
@@ -24,7 +57,7 @@ void closeAndExit()
         fclose(finput);
     if (foutput != NULL)
         fclose(foutput);
-    printf("%5d: tektoOS8 exit with error\n");
+    printf("tektoOS8 exit with error\n");
     exit (-1);
 }
 
@@ -32,24 +65,38 @@ void closeAndExit()
 int main(int argc, char *argv[])
 /******************************/
 {
+#define SLENGTH 127
+
     int c, count;
+    char s[SLENGTH];
 
-    printf("tektoOS8 version 0.1\n");
+    printf("tektoOS8 version 0.2\n");
 
-    if (argc != 3) {
-        printf("Usage: tektoOS8 input_filename output_filename\n");
-        closeAndExit();
-    }
-
-    finput = fopen(argv[1], "r");         // open input file for read
-    if (finput == NULL) {
-        printf("Cannot open %s\n",argv[1]);
+    if (argc != 2) {
+        printf("Usage: tektoOS8 filename (without extension)\n");
         closeAndExit();
     }
     
-    foutput = fopen(argv[2], "w");      // open output file for read/write
+    if (strlen(argv[1]) > (SLENGTH - 5)) {
+        printf("File name %s is too long\n", argv[1]);
+        closeAndExit();
+    }
+    
+    strcpy(s, argv[1]);
+    strcat(s,".plt");
+
+    finput = fopen(s, "r");         // open input file for read
+    if (finput == NULL) {
+        printf("Cannot open %s\n",s);
+        closeAndExit();
+    }
+    
+    strcpy(s, argv[1]);
+    strcat(s,".p8");
+    
+    foutput = fopen(s, "w");      // open output file for read/write
     if (foutput == NULL) {
-        printf("Cannot open %s\n",argv[2]);
+        printf("Cannot open %s\n",s);
         closeAndExit();
     }
 
@@ -72,6 +119,10 @@ int main(int argc, char *argv[])
         else if (c == 127) { // convert ASCII(127)
             fputc('^', foutput);
             fputc('!', foutput);
+        }
+        else if (c == 95) { // convert ASCII(95)
+            fputc('^', foutput);
+            fputc('+', foutput);
         }
         else
             fputc(c, foutput);
