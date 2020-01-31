@@ -106,8 +106,6 @@ int main(int argc, char *argv[])
         count++;
         c = c & 0x7F;
         
-        if (c == 95) c = 94;
-        
         if (c < 32) { // convert control characters
             fputc('^', foutput);
             fputc(c + '@', foutput);

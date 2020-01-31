@@ -61,6 +61,7 @@ This directory contains the following floppy disk images:
 	- pascal3.rx01	Tektronix graphics programs written in Pascal
 	- tekplot1.rx01	Tektronix plot files (to be used with TYPEP8)
 	- tekplot2.rx01	Tektronix plot files (to be used with TYPEP8)
+	- tekplot3.rx01	Tektronix plot files (to be used with TYPEP8)
 
 
 **using tek4010 with the PiDP-8**
