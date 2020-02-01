@@ -1,0 +1,7 @@
+DIR RXA0:
+
+GPLAN .P8 163               BGSS14.P8 108               FUDGE .P8 185
+
+
+  31 FREE BLOCKS
+

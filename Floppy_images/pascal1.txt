@@ -1,0 +1,36 @@
+README.1  For Pascal-OS/8 Floppy 1 of 2.
+
+1984-02-15 JTE.
+
+This floppy contains the Pascal-OS/8 Compiler, Run-Time-System,
+and utility programs.
+
+To set up Pascal-OS/8, do:
+
+        .COPY SYS: < floppy:P.SV,PASCAL.TX,PMD.PB,IDMAP.PB
+        .COPY roomy-device: < floppy:PASCAL.PB
+
+To see if the Pascal-OS/8 system is working, do:
+
+        .R P,floppy:TEST01
+
+
+Files that should be on SYS: are marked with '*'.
+
+  COMPAR.PB -- compare two text files (like SRCCOM)
+  COPYV .PB -- copy an OS/8 file with verify pass.
+  F4REF .PB -- FORTRAN IV cross-referencer (novice complexity)
+  IDMAP .PB -- Identifer Map -- cross-referencer program for Pascal-OS/8
+.
+* P     .SV -- Pascal-OS/8 Run-Time-System (P8RTS).
+  PASCAL.PB -- Pascal compiler.
+* PASCAL.TX -- error message texts for the compiler report.
+  PASCOD.PB -- Decode a Pascal-OS/8 code file.
+  PFMAP .PB -- procedure and function map.
+* PMD   .PB -- Post Mortem Display (execution error traceback)
+  P8HEAD.SV -- .SV header for .PB code files
+  README.1  -- this file.
+  SSRFC .OD -- input for SVUTIL to install P at SSRFC.
+  SVUTIL.PB -- SaveFileUtility (like Futil/ODT for debug of P8RTS).
+  TEST01.PB -- simple printing program to test Pascal-OS/8.
+

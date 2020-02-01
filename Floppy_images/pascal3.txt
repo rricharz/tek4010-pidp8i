@@ -1,0 +1,6 @@
+DIR RXA0:
+
+GRAPH1.PS   8               GRAPH2.PS  17               GRAPH3.PS  17
+TYPEP8.PS   3               TYPEP8.PB   4               
+
+ 438 FREE BLOCKS

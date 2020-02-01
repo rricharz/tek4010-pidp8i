@@ -63,6 +63,8 @@ This directory contains the following floppy disk images:
 	- tekplot2.rx01	Tektronix plot files (to be used with TYPEP8)
 	- tekplot3.rx01	Tektronix plot files (to be used with TYPEP8)
 
+There is a .txt file for each of these images in the directory explaining the content of the image.
+
 
 **using tek4010 with the PiDP-8**
 

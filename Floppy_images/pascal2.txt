@@ -1,0 +1,31 @@
+README.2  For Pascal-OS/8 Floppy 2 of 2.
+
+1984-02-15 JTE.
+
+This floppy contains various sources for Pascal programs. Some
+are (almost or entirely) portable Pascal (marked with '+'),
+some have Pascal-OS/8 dependances.
+
++ CHCNT .PS -- example character count program.
++ COMPAR.PS -- compare two text files
++ COPYTX.PS -- example text file character copy
+  COPYV .PS -- copy OS/8 file with verify pass
+  COPY8 .PS -- example of 8-bit character copy
++ FINDLL.PS -- example find long lines
+  FREAD .PS -- formatted real & integer read procedures
++ F4REF .PS -- FORTRAN IV cross reference program.
+  HILBER.PS -- produce Hilbert curves on TEKTRONIX 4010 series scope
+  IDMAP .PS -- Identifer Map -- cross referencer for Pascal-OS/8
++ ID2ID .PS -- Rename Identifiers in Pascal sources
+  INDEXD.PS -- example indexed (direct) file test program
+  LINKMP.PS -- process MACREL-LINK maps for intelligibility.
++ PFMAP .PS -- Procedure and Function Map
+  README.2  -- this file.
+  READNU.PS -- free-format read real & integer with error handling
+  SVUTIL.PS -- ODT-like program for overlaid save files such as P8RTS.
++ SYMREF.PS -- example generalized symbol cross referencer
+  TEST01.PS -- simple test for Pascal-OS/8 system
+  TRANSC.PS -- fundamental functions for Pascal-OS/8.
+  VTWALK.PS -- toy, random walk on VT100 scope.
++ XREF45.PS -- simple Pascal cross referencer (binary tree)
+

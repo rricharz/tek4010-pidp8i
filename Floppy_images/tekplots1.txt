@@ -1,0 +1,9 @@
+DIR RXA0:
+
+SNOOPY.P8   4               UFO   .P8 262               PRETTY.P8   3
+CHART .P8   8               DASDOT.P8   7               SLINKY.P8  10
+SSWS  .P8  61               USMAP .P8  20               WIZARD.P8   7
+WIZIDD.P8  11               
+
+  94 FREE BLOCKS
+

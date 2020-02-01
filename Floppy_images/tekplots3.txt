@@ -1,0 +1,7 @@
+DIR RXA0:
+
+ISCO36.P8 156               LISSA1.P8  20               LISSA2.P8  30
+LISSA3.P8  30               ASSY3 .P8 123               
+
+ 128 FREE BLOCKS
+
