@@ -3,10 +3,17 @@
 //  rricharz 2020
 
 //  convert all control characters to ^letter
+//  except ignore ASCI(22) and convert ASCII(31) to ^&
 //  (including CR and LF)
 //  add a CRLF every 40 characters
 //  convert ^ to ^#
 //  convert ASCII(127) to ^!
+//  convert ASCII(95) to ^+
+
+//  to display these files on a PDP-11
+//  connect a Tektronix 4010 or 4014 or tek4010
+//  (see https://github.com/rricharz/Tek4010)
+//  and use the Pascal program "typep8" in this repo
 
 //  https://github.com/rricharz/tek4010-pidp8i
 
@@ -44,7 +51,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX 40
+#define MAX 60
 
 FILE *finput;
 FILE *foutput;
@@ -70,7 +77,7 @@ int main(int argc, char *argv[])
     int c, count;
     char s[SLENGTH];
 
-    printf("tektoOS8 version 0.2\n");
+    printf("tektoOS8 version 0.3\n");
 
     if (argc != 2) {
         printf("Usage: tektoOS8 filename (without extension)\n");
@@ -107,20 +114,32 @@ int main(int argc, char *argv[])
         c = c & 0x7F;
         
         if (c < 32) { // convert control characters
-            fputc('^', foutput);
-            fputc(c + '@', foutput);
+            if (c == 31) { // unit separator
+                fputc('^', foutput);
+                fputc('&', foutput);
+                count++;
+            }
+            else if (c != 22) {
+                fputc('^', foutput);
+                fputc(c + '@', foutput);
+                count++;
+            }
+            else count--;
         }
         else if (c == '^') { // convert ^
             fputc('^', foutput);
             fputc('#', foutput);
+            count++;
         }
         else if (c == 127) { // convert ASCII(127)
             fputc('^', foutput);
             fputc('!', foutput);
+            count++;
         }
         else if (c == 95) { // convert ASCII(95)
             fputc('^', foutput);
             fputc('+', foutput);
+            count++;
         }
         else
             fputc(c, foutput);
