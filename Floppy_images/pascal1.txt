@@ -21,7 +21,6 @@ Files that should be on SYS: are marked with '*'.
   COPYV .PB -- copy an OS/8 file with verify pass.
   F4REF .PB -- FORTRAN IV cross-referencer (novice complexity)
   IDMAP .PB -- Identifer Map -- cross-referencer program for Pascal-OS/8
-.
 * P     .SV -- Pascal-OS/8 Run-Time-System (P8RTS).
   PASCAL.PB -- Pascal compiler.
 * PASCAL.TX -- error message texts for the compiler report.

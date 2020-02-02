@@ -1,6 +1,8 @@
-DIR RXA0:
+.DIR RXA0:
 
 GRAPH1.PS   8               GRAPH2.PS  17               GRAPH3.PS  17
-TYPEP8.PS   3               TYPEP8.PB   4               
+TYPEP8.PS   3               TYPEP8.PB   4               STARSH.PS  53
+STARSH.PB  38               
 
- 438 FREE BLOCKS
+ 347 FREE BLOCKS
+

@@ -1,6 +1,9 @@
 # tek4010-pidp8i
 Using the Tektronix 4010 emulator tek4010 on the PiDP-8
 
+Below is a picture showing my Pascal game STARSHIP (starsh.ps) on the PiDP-8
+in OS/8 using tek4010:
+![screen_shot](starship.png?raw=true "Pascal game starship (starsh.ps)")
 
 **Pascal directory**
 
